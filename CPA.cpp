@@ -49,7 +49,6 @@ class CPA {
     uint bitsize = 128; // 128 로 고정
     uint byteSize = 16;
     AES_KEY encKey;
-    AES_KEY decKey;
 
     int Gen(){
         // TODO
