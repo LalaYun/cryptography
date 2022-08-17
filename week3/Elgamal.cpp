@@ -223,13 +223,10 @@ public:
 
         cout << "msg\t: " << BN_bn2hex(m) << "\t" << BN_bn2dec(m) << "\n";
         cout << endl;
-        // TODO START   //////////////////////////////////////////////////////////////////////////////
 
         BN_rand_range(r, d);
         BN_Square_Multi(c0, x, r, d);
         BN_Square_Multi(tmp, y, r, d); BN_mod_mul(c1, tmp, m, d, ctx);
-
-        // TODO END     //////////////////////////////////////////////////////////////////////////////
 
         len1 = BN_bn2bin(c0, cipher[0]);
         len2 = BN_bn2bin(c1, cipher[1]);
@@ -252,13 +249,11 @@ public:
         BIGNUM *result = BN_new();
 
         BN_Ext_Euclid ExtendedEuclidean = BN_Ext_Euclid( );
-        // TODO START   //////////////////////////////////////////////////////////////////////////////
-
+       
         BN_Square_Multi(c0_exp_priv, c0, priv, d);
         ExtendedEuclidean.algorithm(d, c0_exp_priv);
         BN_copy(inv, ExtendedEuclidean.getY());
 
-        // TODO END     //////////////////////////////////////////////////////////////////////////////
         BN_mod_mul(result, c1, inv, d, ctx);
         len3 = BN_bn2bin(result, msg);
 

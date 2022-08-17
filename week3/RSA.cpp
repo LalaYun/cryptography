@@ -136,7 +136,6 @@ public:
         BN_Ext_Euclid ExtendedEuclidean = BN_Ext_Euclid( );
         BN_set_word(e, 3);
 
-        // TODO START   //////////////////////////////////////////////////////////////////////////////
         BIGNUM *one = BN_new(); BIGNUM *tmp = BN_new(); BN_one(one);
         do {
             BN_generate_prime_ex(p, 1024, 0, NULL, NULL, NULL);
@@ -152,7 +151,7 @@ public:
         if(BN_is_negative(d)==1){
             BN_add(d, d, phi);
         }
-        // TODO END     //////////////////////////////////////////////////////////////////////////////
+        
         cout << "N\t: " << BN_bn2hex(N) << "\t" << BN_bn2dec(N) << "\n";
         cout << "e\t: " << BN_bn2hex(e) << "\t" << BN_bn2dec(e) << "\n";
         cout << "d\t: " << BN_bn2hex(d) << "\t" << BN_bn2dec(d) << "\n";
@@ -187,11 +186,9 @@ public:
 
         cout << "msg\t: " << BN_bn2hex(m) << "\t" << BN_bn2dec(m) << "\n";
         cout << endl;
-        // TODO START   //////////////////////////////////////////////////////////////////////////////
 
         BN_Square_Multi(c, m, e, N);
 
-        // TODO END     //////////////////////////////////////////////////////////////////////////////
         int length = BN_bn2bin(c, cipher);
 
         BN_free(m);
@@ -204,11 +201,8 @@ public:
         BIGNUM *c = BN_bin2bn(cipher, len, NULL);
         BIGNUM *result = BN_new();
 
-        // TODO START   //////////////////////////////////////////////////////////////////////////////
-
         BN_Square_Multi(result, c, d, N);
 
-        // TODO END     //////////////////////////////////////////////////////////////////////////////
         int length = BN_bn2bin(result, msg);
 
         BN_free(c);
