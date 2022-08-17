@@ -27,7 +27,6 @@ void BN_printf(const BIGNUM *input)
 
 BIGNUM* BN_Square_Multi(BIGNUM *x, BIGNUM *a, BIGNUM *n) // x^(a) mod n = ? 
 {
-	/* your code here */
 	BIGNUM *z; 
 	z = BN_new();
 	BN_set_word(z, 1);
